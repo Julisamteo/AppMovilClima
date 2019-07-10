@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppClimaa"
+             xmlns:converters="clr-namespace:AppClimaa.Converters"
+             x:Class="AppClimaa.MainPage">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TextToImage x:Key="converter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout>
+        <!-- Place new controls here -->
+        <SearchBar 
+            SearchCommand="{Binding SearchCommand}"
+            x:Name="search"
+            SearchCommandParameter="{Binding Text, Source={x:Reference search}}">
+        </SearchBar>
+        <Label Text="Las condiciones del tiempo son"/>
+        <Label Text="{Binding Data.daily.summary}"/>
+        <Image Source="{Binding Data.daily.icon, Converter={StaticResource converter}}"></Image>
+
+    </StackLayout>
+
+</ContentPage>
